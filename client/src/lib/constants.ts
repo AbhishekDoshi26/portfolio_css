@@ -21,10 +21,10 @@ export const NAV_LINKS = [
 
 export const PERSONAL_DETAILS = {
   name: 'Abhishek',
-  position: 'Flutter Developer',
-  intro: "Hi! I'm Abhishek -",
-  description: "Google Developer Expert for Dart, Flutter & Firebase. Working in Flutter and Firebase from past 6 years. With deep experience in Flutter & Firebase, let's give your idea a life. Community Leader & Content Creator.",
-  about: "Flutter Developer and GDE for Dart, Flutter & Firebase working in app development field for 6 years so far, specialized in app and website development with Flutter. With vast and deep experience of Flutter, I curate your app and give it a soul. Let's give your idea a life.",
+  position: 'Flutter Developer & Google Developer Expert',
+  intro: "Hi! I'm",
+  description: "Google Developer Expert for Dart, Flutter & Firebase. Working with Flutter and Firebase for over 6 years. With deep expertise in mobile development, I can bring your app ideas to life. Community Leader & Content Creator passionate about teaching and sharing knowledge.",
+  about: "Flutter Developer and Google Developer Expert (GDE) for Dart, Flutter & Firebase working in app development for 6+ years, specialized in creating beautiful, high-performance mobile and web applications with Flutter. With extensive experience, I transform your vision into reality and give your app a soul that resonates with users. Let's collaborate and bring your ideas to life with cutting-edge technology.",
   linkedinShort: "linkedin.com/in/abhishekdoshi26",
   email: "adoshi26.ad@gmail.com",
   phone: "+917818044311",
