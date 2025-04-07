@@ -42,14 +42,23 @@ export default function BlogSection() {
   return (
     <section id="blog" className="py-20 bg-muted">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <motion.h2
+        <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-6"
+          className="text-center mb-3"
         >
-          Latest <span className="text-gradient">Articles</span>
+          <span className="text-primary text-sm font-medium uppercase tracking-wider">my blog</span>
+        </motion.div>
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-3xl md:text-4xl font-bold text-center mb-3"
+        >
+          Some Recent Blogs <span className="text-gradient">That You Might Like!</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
@@ -58,7 +67,7 @@ export default function BlogSection() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="text-muted-foreground text-center max-w-2xl mx-auto mb-12"
         >
-          Sharing my knowledge and experiences with the Flutter community
+          Writing Blogs is a way of sharing knowledge and experience with the world.
         </motion.p>
 
         <motion.div

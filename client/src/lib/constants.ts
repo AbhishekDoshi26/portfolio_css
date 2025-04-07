@@ -83,13 +83,6 @@ export const BLOG_POSTS = [
     category: "flutter"
   },
   {
-    title: "Dart 3.4 — The class modifier bonanza 🧙",
-    date: "April 3, 2024",
-    url: "https://medium.com/@abhishekdoshi26/dart-3-4-the-class-modifier-bonanza-e97dc4b1e3bf",
-    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*-8TjTNu2-b5rrKA4s3bZ6Q.png",
-    category: "dart"
-  },
-  {
     title: "The One Trick Every Flutter Web Dev Needs to Know",
     date: "February 21, 2024",
     url: "https://medium.com/@abhishekdoshi26/faster-flutter-web-app-9d50eb0b6954",
@@ -108,28 +101,14 @@ export const BLOG_POSTS = [
     date: "August 27, 2023",
     url: "https://medium.com/@abhishekdoshi26/package-based-architecture-lets-deliver-the-packages-d8ef80a6607d",
     image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*d7-vmPj45UgQZ3lp0EKP7A.png",
-    category: "architecture"
+    category: "flutter"
   },
   {
     title: "BLoC — The Magic of Single State Class",
     date: "July 2, 2023",
     url: "https://medium.com/google-developer-experts/bloc-single-state-class-5a66fdffb270",
     image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*cAnaMR6CTRVXIocFvEoW5Q.png",
-    category: "state-management"
-  },
-  {
-    title: "Deep Links",
-    date: "June 30, 2023",
-    url: "https://medium.com/google-developer-experts/deep-links-08f127916554",
-    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*6-6eDGfKJb0tXtLABdTKNQ.jpeg",
     category: "flutter"
-  },
-  {
-    title: "Google Checks: Simplifying Privacy Compliance",
-    date: "April 25, 2023",
-    url: "https://abhishekdoshi26.medium.com/google-checks-simplifying-privacy-compliance-74512f527dc0",
-    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*EbPvuB4k1Y3YQNZh_00T8A.jpeg",
-    category: "firebase"
   },
   {
     title: "Records & Patterns — Dart | Flutter",
