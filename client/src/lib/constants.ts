@@ -76,11 +76,18 @@ export const STATS = [
 
 export const BLOG_POSTS = [
   {
-    title: "WASM + Flutter Web — Let's understand it!",
-    date: "June 15, 2024",
-    url: "https://medium.com/@abhishekdoshi26/wasm-650ca52f04df",
-    image: "https://cdn-images-1.medium.com/v2/resize:fit:1600/1*jtbJQ9lNn5Gcfq4QsPxS9w.png",
+    title: "Deep Links",
+    date: "June 30, 2023",
+    url: "https://medium.com/google-developer-experts/deep-links-08f127916554",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*6-6eDGfKJb0tXtLABdTKNQ.jpeg",
     category: "flutter"
+  },
+  {
+    title: "Google Checks: Simplifying Privacy Compliance",
+    date: "April 25, 2023",
+    url: "https://abhishekdoshi26.medium.com/google-checks-simplifying-privacy-compliance-74512f527dc0",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*EbPvuB4k1Y3YQNZh_00T8A.jpeg",
+    category: "firebase"
   },
   {
     title: "Dart 3.4 — The class modifier bonanza 🧙",
@@ -116,13 +123,6 @@ export const BLOG_POSTS = [
     url: "https://medium.com/@abhishekdoshi26/package-based-architecture-lets-deliver-the-packages-d8ef80a6607d",
     image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*d7-vmPj45UgQZ3lp0EKP7A.png",
     category: "architecture"
-  },
-  {
-    title: "BLoC — The Magic of Single State Class",
-    date: "July 2, 2023",
-    url: "https://medium.com/google-developer-experts/bloc-single-state-class-5a66fdffb270",
-    image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*cAnaMR6CTRVXIocFvEoW5Q.png",
-    category: "state-management"
   }
 ];
 
@@ -246,5 +246,17 @@ export const TESTIMONIALS = [
     position: "VP of Software Development",
     testimonial: "Abhishek is a very sharp engineer with a deep understanding of software development in Flutter. Easy to work with and willing to take on complex refactoring projects. I enjoyed having him on my team, and I hope our paths cross again someday.",
     image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/ChipWhitmer.jpeg?alt=media&token=0d86a29e-c7d2-4f46-b940-60c808373c21"
+  },
+  {
+    name: "Krish Krithivasan",
+    position: "Chief Technology Officer",
+    testimonial: "Abhishek works with me on developing a critical business application for my company using Flutter. He is very responsive and knowledgeable. His code is mature and professionally written / organized. It allows us to have a sustainable code base that we should be able to enhance with time.\n\nIn his work, he has mentored and guided a new developer and delegated effectively. His ways of working are well suited to getting work done with a distributed work force and he has the makings of a good team leader.\n\nI would happily recommend him to others and look forward to continuing to work with him.",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/krish.jpeg?alt=media&token=4ebc7ef4-2d2e-4ea8-a6d5-2be0ca8e434c"
+  },
+  {
+    name: "Jahid Hasan",
+    position: "Mobile Developer - Sakan",
+    testimonial: "I had the pleasure of working with Abhishek Doshi on the Sakan mobile app project, and I am consistently impressed by his exceptional skills as a developer. Abhishek demonstrated a deep understanding of flutter, contributing significantly to the project's success with his technical expertise and problem-solving abilities. His attention to detail, ability to meet tight deadlines, and collaborative approach made him a valuable asset to our team. Abhishek's dedication and professionalism set him apart, and I highly recommend him for any development role.",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/jahid.jpeg?alt=media&token=f9db12fb-40df-4887-a56b-9dc0d99a6c98"
   }
 ];
