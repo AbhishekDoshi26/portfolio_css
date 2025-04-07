@@ -76,17 +76,24 @@ export const STATS = [
 
 export const BLOG_POSTS = [
   {
-    title: "WASM + Flutter Web — Let's understand it!",
-    date: "June 15, 2024",
-    url: "https://medium.com/@abhishekdoshi26/wasm-650ca52f04df",
-    image: "https://cdn-images-1.medium.com/v2/resize:fit:1600/1*jtbJQ9lNn5Gcfq4QsPxS9w.png",
-    category: "flutter"
+    title: "Dart 3.4 — The class modifier bonanza 🧙",
+    date: "April 3, 2024",
+    url: "https://medium.com/@abhishekdoshi26/dart-3-4-the-class-modifier-bonanza-e97dc4b1e3bf",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*-8TjTNu2-b5rrKA4s3bZ6Q.png",
+    category: "dart"
   },
   {
     title: "The One Trick Every Flutter Web Dev Needs to Know",
     date: "February 21, 2024",
     url: "https://medium.com/@abhishekdoshi26/faster-flutter-web-app-9d50eb0b6954",
     image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aEO3narhR66G1dl_-h56Ug.png",
+    category: "flutter"
+  },
+  {
+    title: "Adding Floating Action Buttons Directly to the AppBar in Flutter",
+    date: "January 23, 2024",
+    url: "https://medium.com/@abhishekdoshi26/adding-floating-action-buttons-directly-to-the-appbar-in-flutter-4d6f2e98fd78",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*QfCL6Tn_vvp_-23Gr0iFQA.png",
     category: "flutter"
   },
   {
@@ -101,28 +108,14 @@ export const BLOG_POSTS = [
     date: "August 27, 2023",
     url: "https://medium.com/@abhishekdoshi26/package-based-architecture-lets-deliver-the-packages-d8ef80a6607d",
     image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*d7-vmPj45UgQZ3lp0EKP7A.png",
-    category: "flutter"
+    category: "architecture"
   },
   {
     title: "BLoC — The Magic of Single State Class",
     date: "July 2, 2023",
     url: "https://medium.com/google-developer-experts/bloc-single-state-class-5a66fdffb270",
     image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*cAnaMR6CTRVXIocFvEoW5Q.png",
-    category: "flutter"
-  },
-  {
-    title: "Records & Patterns — Dart | Flutter",
-    date: "February 22, 2023",
-    url: "https://medium.com/google-developer-experts/records-patterns-824447a9f2b1",
-    image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*ZpQmrMxB7UE53ufQlm_ZwA.png",
-    category: "flutter"
-  },
-  {
-    title: "Firebase App Distribution — Flutter",
-    date: "February 2, 2023",
-    url: "https://medium.com/google-developer-experts/firebase-app-distribution-e41420f8cdcc",
-    image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*QEmffIPXSn0HT571Fmfdnw.png",
-    category: "firebase"
+    category: "state-management"
   }
 ];
 
