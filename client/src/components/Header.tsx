@@ -73,10 +73,10 @@ export default function Header() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
             href="#"
-            className="text-2xl font-bold text-white"
+            className="text-2xl font-bold"
             onClick={() => handleLinkClick('home')}
           >
-            Abhishek<span className="text-primary">.dev</span>
+            <span className="text-gradient">Abhishek</span>
           </motion.a>
           
           {/* Desktop Navigation */}

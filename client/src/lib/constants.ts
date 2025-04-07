@@ -14,17 +14,15 @@ export const SOCIAL_LINKS = {
 export const NAV_LINKS = [
   { name: 'Home', path: '#home' },
   { name: 'About', path: '#about' },
-  { name: 'Projects', path: '#projects' },
-  { name: 'Skills', path: '#skills' },
   { name: 'Testimonials', path: '#testimonials' },
   { name: 'Blog', path: '#blog' },
   { name: 'Contact', path: '#contact' }
 ];
 
 export const PERSONAL_DETAILS = {
-  name: 'Abhishek Doshi',
+  name: 'Abhishek',
   position: 'Flutter Developer',
-  intro: "Hi! I'm Abhishek Doshi -",
+  intro: "Hi! I'm Abhishek -",
   description: "Google Developer Expert for Dart, Flutter & Firebase. Working in Flutter and Firebase from past 6 years. With deep experience in Flutter & Firebase, let's give your idea a life. Community Leader & Content Creator.",
   about: "Flutter Developer and GDE for Dart, Flutter & Firebase working in app development field for 6 years so far, specialized in app and website development with Flutter. With vast and deep experience of Flutter, I curate your app and give it a soul. Let's give your idea a life.",
   linkedinShort: "linkedin.com/in/abhishekdoshi26",

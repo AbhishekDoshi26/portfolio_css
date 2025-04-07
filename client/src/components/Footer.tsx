@@ -17,8 +17,8 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-            <a href="#" className="text-2xl font-bold text-white">
-              Abhishek<span className="text-primary">.dev</span>
+            <a href="#" className="text-2xl font-bold">
+              <span className="text-gradient">Abhishek</span>
             </a>
             <p className="text-muted-foreground mt-2">Google Developer Expert for Dart, Flutter & Firebase</p>
           </div>
