@@ -94,7 +94,7 @@ export default function HeroSection() {
                 ref={typingRef}
                 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
               >
-                <span>{PERSONAL_DETAILS.intro.split(' ').slice(0, -1).join(' ')} <span className="text-gradient">Abhishek</span> -</span>
+                <span className="text-gradient">{PERSONAL_DETAILS.intro}</span>
               </h1>
             </div>
             <motion.p

@@ -15,14 +15,15 @@ export const NAV_LINKS = [
   { name: 'Home', path: '#home' },
   { name: 'About', path: '#about' },
   { name: 'Testimonials', path: '#testimonials' },
+  { name: 'Packages', path: '#packages' },
   { name: 'Blog', path: '#blog' },
   { name: 'Contact', path: '#contact' }
 ];
 
 export const PERSONAL_DETAILS = {
   name: 'Abhishek',
-  position: 'Flutter Developer & Google Developer Expert',
-  intro: "Hi! I'm",
+  position: 'Google Developer Expert',
+  intro: "Hi! I'm Abhishek",
   description: "Google Developer Expert for Dart, Flutter & Firebase. Working with Flutter and Firebase for over 6 years. With deep expertise in mobile development, I can bring your app ideas to life. Community Leader & Content Creator passionate about teaching and sharing knowledge.",
   about: "Flutter Developer and Google Developer Expert (GDE) for Dart, Flutter & Firebase working in app development for 6+ years, specialized in creating beautiful, high-performance mobile and web applications with Flutter. With extensive experience, I transform your vision into reality and give your app a soul that resonates with users. Let's collaborate and bring your ideas to life with cutting-edge technology.",
   linkedinShort: "linkedin.com/in/abhishekdoshi26",
@@ -32,8 +33,8 @@ export const PERSONAL_DETAILS = {
 };
 
 export const COLORS = {
-  primary: 'hsl(160 64% 40%)',
-  secondary: 'hsl(217 91% 60%)',
+  primary: 'hsl(217 91% 60%)',
+  secondary: 'hsl(160 64% 40%)',
   dark: 'hsl(0 0% 7%)',
   darkGray: 'hsl(220 6% 16%)',
   lightGray: 'hsl(220 9% 65%)'
@@ -122,6 +123,30 @@ export const BLOG_POSTS = [
     url: "https://medium.com/google-developer-experts/firebase-app-distribution-e41420f8cdcc",
     image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*QEmffIPXSn0HT571Fmfdnw.png",
     category: "firebase"
+  }
+];
+
+export const FLUTTER_PACKAGES = [
+  {
+    name: "contactus",
+    description: "A package which helps developers to add their contact information with ease. Includes support for website, email, phone number, and more.",
+    github: "https://github.com/AbhishekDoshi26/contactus",
+    pub: "https://pub.dev/packages/contactus",
+    stars: "65+"
+  },
+  {
+    name: "parent_child_checkbox",
+    description: "A Flutter package that establishes hierarchy in checkboxes, creating parent-child relationships with synchronized selection states.",
+    github: "https://github.com/AbhishekDoshi26/parent-child-checkbox",
+    pub: "https://pub.dev/packages/parent_child_checkbox",
+    stars: "15+"
+  },
+  {
+    name: "super_extensions",
+    description: "A comprehensive Flutter package that supports the most commonly used extension methods to boost development productivity.",
+    github: "https://github.com/AbhishekDoshi26/super_extensions",
+    pub: "https://pub.dev/packages/super_extensions",
+    stars: "20+"
   }
 ];
 
