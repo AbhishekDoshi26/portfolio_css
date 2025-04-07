@@ -1,26 +1,32 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaQuoteLeft, FaTimes, FaExpand } from 'react-icons/fa';
+import { FaQuoteLeft, FaTimes, FaExpand, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { TESTIMONIALS } from '@/lib/constants';
+import useEmblaCarousel from 'embla-carousel-react';
 
 export default function TestimonialsSection() {
   const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
-  };
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setPrevBtnEnabled(emblaApi.canScrollPrev());
+    setNextBtnEnabled(emblaApi.canScrollNext());
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
 
   const openFullTestimonial = (index: number) => {
     setExpandedTestimonial(index);
@@ -31,6 +37,52 @@ export default function TestimonialsSection() {
     setExpandedTestimonial(null);
     document.body.style.overflow = 'auto';
   };
+
+  const renderTestimonialCard = (testimonial: typeof TESTIMONIALS[0], index: number) => (
+    <div className="embla__slide p-4" key={index}>
+      <div 
+        className="bg-muted rounded-2xl shadow-lg p-6 relative h-full flex flex-col group hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
+      >
+        <FaQuoteLeft className="text-primary/20 text-4xl mb-4" />
+        
+        <div className="mb-6 flex-grow">
+          <p className="text-muted-foreground leading-relaxed text-sm">
+            {testimonial.testimonial.length > 250 
+              ? `${testimonial.testimonial.substring(0, 250)}...` 
+              : testimonial.testimonial}
+          </p>
+        </div>
+        
+        <div className="flex items-center justify-between mt-auto pt-4 border-t border-primary/10">
+          <div className="flex items-center">
+            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary/30 mr-4">
+              <img 
+                src={testimonial.image} 
+                alt={testimonial.name} 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Fallback for broken images
+                  const target = e.target as HTMLImageElement;
+                  target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(testimonial.name) + '&background=3B82F6&color=fff';
+                }}
+              />
+            </div>
+            <div>
+              <h4 className="font-bold">{testimonial.name}</h4>
+              <p className="text-primary text-sm">{testimonial.position}</p>
+            </div>
+          </div>
+          <button 
+            onClick={() => openFullTestimonial(index)}
+            className="p-2 text-primary/70 hover:text-primary hover:bg-primary/10 rounded-full transition-colors duration-300"
+            aria-label="Read full testimonial"
+          >
+            <FaExpand className="text-sm" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <section id="testimonials" className="py-20 bg-background">
@@ -54,59 +106,50 @@ export default function TestimonialsSection() {
           Testimonials from clients and colleagues who value our collaboration
         </motion.p>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {TESTIMONIALS.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              className="bg-muted rounded-2xl shadow-lg p-6 relative h-full flex flex-col group hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
-            >
-              <FaQuoteLeft className="text-primary/20 text-4xl mb-4" />
-              
-              <div className="mb-6 flex-grow">
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  {testimonial.testimonial.length > 250 
-                    ? `${testimonial.testimonial.substring(0, 250)}...` 
-                    : testimonial.testimonial}
-                </p>
-              </div>
-              
-              <div className="flex items-center justify-between mt-auto pt-4 border-t border-primary/10">
-                <div className="flex items-center">
-                  <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary/30 mr-4">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        // Fallback for broken images
-                        const target = e.target as HTMLImageElement;
-                        target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(testimonial.name) + '&background=3B82F6&color=fff';
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-bold">{testimonial.name}</h4>
-                    <p className="text-primary text-sm">{testimonial.position}</p>
-                  </div>
-                </div>
-                <button 
-                  onClick={() => openFullTestimonial(index)}
-                  className="p-2 text-primary/70 hover:text-primary hover:bg-primary/10 rounded-full transition-colors duration-300"
-                  aria-label="Read full testimonial"
-                >
-                  <FaExpand className="text-sm" />
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="relative">
+          {/* Carousel container */}
+          <div className="embla overflow-hidden" ref={emblaRef}>
+            <div className="embla__container flex">
+              {TESTIMONIALS.map((testimonial, index) => (
+                renderTestimonialCard(testimonial, index)
+              ))}
+            </div>
+          </div>
+          
+          {/* Navigation buttons */}
+          <button 
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-background/70 backdrop-blur-sm p-4 rounded-full shadow-lg z-10 -ml-4 hover:bg-background transition-all duration-300"
+            onClick={scrollPrev}
+            disabled={!prevBtnEnabled}
+          >
+            <FaChevronLeft className="text-lg text-primary" />
+          </button>
+          
+          <button 
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-background/70 backdrop-blur-sm p-4 rounded-full shadow-lg z-10 -mr-4 hover:bg-background transition-all duration-300"
+            onClick={scrollNext}
+            disabled={!nextBtnEnabled}
+          >
+            <FaChevronRight className="text-lg text-primary" />
+          </button>
+        </div>
+        
+        {/* Dots indicator */}
+        <div className="flex justify-center mt-8">
+          <div className="flex space-x-2">
+            {TESTIMONIALS.slice(0, 5).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => emblaApi?.scrollTo(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  selectedIndex === index ? 'bg-primary scale-110' : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+            <span className="px-2 text-xs text-gray-500 self-center">...</span>
+          </div>
+        </div>
       </div>
 
       {/* Full testimonial modal */}

@@ -67,4 +67,34 @@
   .project-card:hover {
     @apply -translate-y-1 shadow-lg shadow-primary/10;
   }
+  
+  /* Embla Carousel Styles */
+  .embla {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .embla__container {
+    display: flex;
+    backface-visibility: hidden;
+  }
+
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    position: relative;
+  }
+
+  @media (min-width: 640px) {
+    .embla__slide {
+      flex: 0 0 50%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .embla__slide {
+      flex: 0 0 33.33%;
+    }
+  }
 }

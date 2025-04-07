@@ -76,18 +76,11 @@ export const STATS = [
 
 export const BLOG_POSTS = [
   {
-    title: "Deep Links",
-    date: "June 30, 2023",
-    url: "https://medium.com/google-developer-experts/deep-links-08f127916554",
-    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*6-6eDGfKJb0tXtLABdTKNQ.jpeg",
+    title: "WASM + Flutter Web — Let's understand it!",
+    date: "June 15, 2024",
+    url: "https://medium.com/@abhishekdoshi26/wasm-650ca52f04df",
+    image: "https://cdn-images-1.medium.com/v2/resize:fit:1600/1*jtbJQ9lNn5Gcfq4QsPxS9w.png",
     category: "flutter"
-  },
-  {
-    title: "Google Checks: Simplifying Privacy Compliance",
-    date: "April 25, 2023",
-    url: "https://abhishekdoshi26.medium.com/google-checks-simplifying-privacy-compliance-74512f527dc0",
-    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*EbPvuB4k1Y3YQNZh_00T8A.jpeg",
-    category: "firebase"
   },
   {
     title: "Dart 3.4 — The class modifier bonanza 🧙",
@@ -104,13 +97,6 @@ export const BLOG_POSTS = [
     category: "flutter"
   },
   {
-    title: "Adding Floating Action Buttons Directly to the AppBar in Flutter",
-    date: "January 23, 2024",
-    url: "https://medium.com/@abhishekdoshi26/adding-floating-action-buttons-directly-to-the-appbar-in-flutter-4d6f2e98fd78",
-    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*QfCL6Tn_vvp_-23Gr0iFQA.png",
-    category: "flutter"
-  },
-  {
     title: "Flutter: Seamless Header Navigation from AppBar",
     date: "November 12, 2023",
     url: "https://medium.com/@abhishekdoshi26/flutter-seamless-header-navigation-from-appbar-a796d0180d73",
@@ -123,6 +109,41 @@ export const BLOG_POSTS = [
     url: "https://medium.com/@abhishekdoshi26/package-based-architecture-lets-deliver-the-packages-d8ef80a6607d",
     image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*d7-vmPj45UgQZ3lp0EKP7A.png",
     category: "architecture"
+  },
+  {
+    title: "BLoC — The Magic of Single State Class",
+    date: "July 2, 2023",
+    url: "https://medium.com/google-developer-experts/bloc-single-state-class-5a66fdffb270",
+    image: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*cAnaMR6CTRVXIocFvEoW5Q.png",
+    category: "state-management"
+  },
+  {
+    title: "Deep Links",
+    date: "June 30, 2023",
+    url: "https://medium.com/google-developer-experts/deep-links-08f127916554",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*6-6eDGfKJb0tXtLABdTKNQ.jpeg",
+    category: "flutter"
+  },
+  {
+    title: "Google Checks: Simplifying Privacy Compliance",
+    date: "April 25, 2023",
+    url: "https://abhishekdoshi26.medium.com/google-checks-simplifying-privacy-compliance-74512f527dc0",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*EbPvuB4k1Y3YQNZh_00T8A.jpeg",
+    category: "firebase"
+  },
+  {
+    title: "Records & Patterns — Dart | Flutter",
+    date: "February 22, 2023",
+    url: "https://medium.com/google-developer-experts/records-patterns-824447a9f2b1",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*yQ35rZHq_L9b6iSyXAsHzg.png", 
+    category: "dart"
+  },
+  {
+    title: "Firebase App Distribution — Flutter",
+    date: "February 2, 2023",
+    url: "https://medium.com/google-developer-experts/firebase-app-distribution-e41420f8cdcc",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*MGW2vYlcT9Tqu8E7ACLLdw.jpeg",
+    category: "firebase"
   }
 ];
 
