@@ -76,6 +76,13 @@ export const STATS = [
 
 export const BLOG_POSTS = [
   {
+    title: "WASM + Flutter Web — Let's understand it!",
+    date: "June 15, 2024",
+    url: "https://medium.com/@abhishekdoshi26/wasm-650ca52f04df",
+    image: "https://cdn-images-1.medium.com/v2/resize:fit:1600/1*jtbJQ9lNn5Gcfq4QsPxS9w.png",
+    category: "flutter"
+  },
+  {
     title: "Dart 3.4 — The class modifier bonanza 🧙",
     date: "April 3, 2024",
     url: "https://medium.com/@abhishekdoshi26/dart-3-4-the-class-modifier-bonanza-e97dc4b1e3bf",
@@ -172,6 +179,72 @@ export const TESTIMONIALS = [
     name: "Bhavik Dodia",
     position: "Software Engineer",
     testimonial: "Abhishek is a great leader and partner to work with. He always motivates others to try new things and grab new opportunities. He is a good developer, mentor, leader and he helps everyone.",
-    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/Bhavik-Dodia.jpg?alt=media&token=62b9a590-27f1-4a5e-bc12-28479183190a"
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/Bhavik-Dodia.jpg?alt=media&token=00a043b8-f4b4-4c9e-b1a8-ed276e4f99d5"
+  },
+  {
+    name: "Samia Ashraf",
+    position: "Google Developer Expert",
+    testimonial: "I had the amazing opportunity to meet Abhishek during one of the interview rounds for GDE. He is a passionate Flutter developer who will go out of their way to teach fundamentals to anyone.\n\nHe motivates me to always put in extra effort and learn new things. A great addition to the team, i'm sure he will excel in any organization that he joins!",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/Samia-Ashraf.jpg?alt=media&token=ecb4c54e-1d54-4f13-bbc0-7cfc0af383cd"
+  },
+  {
+    name: "Hafeez Rana",
+    position: "Flutter Developer",
+    testimonial: "Abhishek is a senior Flutter developer who has been a great mentor and colleague to me. He has taught me many things about developing cross-platform mobile applications using the latest technologies and frameworks. He is also a nice guy who is easy to work with and always willing to help. I would love to work with him again in the future. Thank you so much, Abhishek, for your valuable guidance and support. Flutter Dev 💙🙌",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/Hafeez-Rana.jpg?alt=media&token=646a6130-6520-4e95-bff6-33b41baae22a"
+  },
+  {
+    name: "Gyan Upadhyay",
+    position: "S.D.E (Flutter)",
+    testimonial: "I highly recommend Abhishek as a skilled Flutter developer. His expertise in Flutter, along with their ability to create responsive and visually appealing UIs, makes them an invaluable asset to any project. He consistently deliver high-quality code and are adept at troubleshooting and problem-solving. His dedication to staying up-to-date with Flutter's latest developments ensures that they can tackle any challenge effectively. Overall, Abhishek would be a fantastic addition to any team looking for a talented Flutter developer.",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/Gyan-Upadhyay.jpg?alt=media&token=5873fe23-7ab1-4d11-a69e-6a86d8e5b45f"
+  },
+  {
+    name: "Utsav Ghimire",
+    position: "Software Engineer",
+    testimonial: "Working with Abhishek was not only professionally rewarding but also a genuinely pleasant experience. His positive attitude, collaborative nature, and strong work ethic made our collaboration enjoyable. I am genuinely looking forward to the opportunity to work with Abhishek on future projects. He's a valuable asset to any team, and I highly recommend him for his outstanding skills and his ability to foster a positive and productive work environment :)",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/Utsav-Ghimire.jpg?alt=media&token=9bb03d06-820d-41dd-9010-25ad188432d7"
+  },
+  {
+    name: "Matthias Raaz",
+    position: "Co-Founder at Deep5",
+    testimonial: "Absolutely recommend Abhishek as a Flutter developer. Outstanding expertise, exceptional communication skills. A top-notch collaborator!",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/Matthias-Raaz.jpg?alt=media&token=1160365e-b963-4438-8a59-61964bd76b9a"
+  },
+  {
+    name: "Abhineya Beduru",
+    position: "Flutter Developer",
+    testimonial: "I feel very happy to get the opportunity to work with Abhishek. He is indeed not only just a great person but also a passionate and skilled flutter developer. He is a hardworking and dedicated person and always motivates me to put in some extra effort. He is a great mentor too and I am looking forward to learning more from him. And undoubtedly I would recommend him.",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/abhineya.jpg?alt=media&token=bda0b0d8-c1e3-4b0c-9cf1-7391ffed166b"
+  },
+  {
+    name: "Jayesh Seth",
+    position: "Android App Developer",
+    testimonial: "Abhishek is an exceptional flutter developer and organizer. He has deep knowledge and understanding of the flutter framework and dart language he also has helped and inspired me with his skill as a developer and community organizer. He is also a great communicator who can explain complex topics in simpler terms.",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/JayeshSeth.jpg?alt=media&token=e1f54560-c38f-4b7b-8b5f-fc111131a04f"
+  },
+  {
+    name: "Chirag Kalsariya",
+    position: "Senior iOS & Flutter Developer",
+    testimonial: "Abhishek Doshi is an outstanding individual with a deep passion for Flutter and mobile app development. I have witnessed Abhishek's commitment to continuous improvement, which is reflected in his pursuit of becoming a Google Developer Expert in this domain. I have had the pleasure of directly managing Abhishek during his time as a team member in our organization. I have full confidence that he will make a significant and positive contribution to any organization.",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/chirag.jpg?alt=media&token=049fd0c3-0123-4313-8dfc-f4ab92324374"
+  },
+  {
+    name: "Purvik Rana",
+    position: "Flutter Tech Lead",
+    testimonial: "Abhishek has excellent telent in Flutter framework to build Mobile Applications. He really has good communication skills to share his knowledge to his network. He put all his efforts to achieve targeted feature with proper quality and within time. He is a good key player in group discussions. He was a part of our Mobile Team as Flutter Developer for a project where he has given his best. I will always recommend him as a key player of a team where he will give his best.",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/PurvikRana.jpg?alt=media&token=9b2eb8bf-e5e4-4b9d-8439-484575c93a3a"
+  },
+  {
+    name: "Khushboo Rathod",
+    position: "Project Manager",
+    testimonial: "Abhishek is an outstanding developer I've encountered in my career. Serving as a mentor, leader, and teammate early in his professional journey, Abhishek stands out. My collaboration with him highlighted his exceptional knowledge of Flutter, precise attention to detail, and impressive team leadership capabilities. Moreover, his curiosity and enthusiasm for learning new things make him a truly remarkable individual in the field.",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/KhushbooRathod.jpeg?alt=media&token=7d7b8ef3-aff5-42f7-995d-54e7b2b53299"
+  },
+  {
+    name: "Chip Whitmer",
+    position: "VP of Software Development",
+    testimonial: "Abhishek is a very sharp engineer with a deep understanding of software development in Flutter. Easy to work with and willing to take on complex refactoring projects. I enjoyed having him on my team, and I hope our paths cross again someday.",
+    image: "https://firebasestorage.googleapis.com/v0/b/abhishek-doshi-portfolio.appspot.com/o/ChipWhitmer.jpeg?alt=media&token=0d86a29e-c7d2-4f46-b940-60c808373c21"
   }
 ];
