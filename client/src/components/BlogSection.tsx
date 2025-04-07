@@ -72,22 +72,22 @@ export default function BlogSection() {
             <motion.div 
               key={index} 
               variants={item}
-              className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-border/40 hover:border-primary/30 group"
+              className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <a href={post.url} target="_blank" rel="noopener noreferrer" className="block">
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={post.image} 
                     alt={post.title} 
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       // Fallback if image doesn't load
                       const target = e.target as HTMLImageElement;
                       target.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
                     }}
                   />
-                  <div className="absolute top-0 right-0 p-3">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryStyle(post.category)}`}>
+                  <div className="absolute bottom-0 left-0 p-2">
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryStyle(post.category)}`}>
                       {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
                     </span>
                   </div>
@@ -97,12 +97,12 @@ export default function BlogSection() {
                     <FaCalendarAlt className="mr-2" />
                     <span>{post.date}</span>
                   </div>
-                  <h3 className="text-lg font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-lg font-bold mb-3 line-clamp-2 hover:text-primary transition-colors">
                     {post.title}
                   </h3>
                   <div className="flex items-center text-primary mt-4 text-sm font-medium">
                     <span>Read Article</span>
-                    <FaArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                    <FaArrowRight className="ml-2 hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </a>
@@ -121,10 +121,10 @@ export default function BlogSection() {
             href="https://medium.com/@abhishekdoshi26" 
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full bg-primary text-white hover:bg-primary/90 font-medium inline-flex items-center shadow-md hover:shadow-lg transition-all duration-300 group"
+            className="px-6 py-3 rounded-md bg-primary text-white hover:bg-primary/90 font-medium inline-flex items-center transition-colors"
           >
             <span>View All Articles</span>
-            <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            <FaArrowRight className="ml-2" />
           </a>
         </motion.div>
       </div>
