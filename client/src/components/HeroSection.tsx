@@ -6,7 +6,11 @@ import {
   FaTwitter,
   FaEnvelope,
   FaChevronDown,
+  FaInstagram,
+  FaMediumM,
+  FaCalendarAlt,
 } from "react-icons/fa";
+import { PERSONAL_DETAILS, SOCIAL_LINKS } from "@/lib/constants";
 
 export default function HeroSection() {
   const typingRef = useRef<HTMLHeadingElement>(null);
@@ -48,10 +52,13 @@ export default function HeroSection() {
   };
 
   const socialLinks = [
-    { icon: <FaGithub />, url: "#", label: "GitHub" },
-    { icon: <FaLinkedin />, url: "#", label: "LinkedIn" },
-    { icon: <FaTwitter />, url: "#", label: "Twitter" },
-    { icon: <FaEnvelope />, url: "#", label: "Email" },
+    { icon: <FaGithub />, url: SOCIAL_LINKS.github, label: "GitHub" },
+    { icon: <FaLinkedin />, url: SOCIAL_LINKS.linkedin, label: "LinkedIn" },
+    { icon: <FaTwitter />, url: SOCIAL_LINKS.twitter, label: "Twitter" },
+    { icon: <FaInstagram />, url: SOCIAL_LINKS.instagram, label: "Instagram" },
+    { icon: <FaMediumM />, url: SOCIAL_LINKS.medium, label: "Medium" },
+    { icon: <FaEnvelope />, url: SOCIAL_LINKS.email, label: "Email" },
+    { icon: <FaCalendarAlt />, url: SOCIAL_LINKS.calendly, label: "Calendly" },
   ];
 
   const container = {
@@ -87,8 +94,7 @@ export default function HeroSection() {
                 ref={typingRef}
                 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
               >
-                <span>Hi, I'm </span>
-                <span className="text-gradient">Abhishek</span>
+                <span>{PERSONAL_DETAILS.intro}</span>
               </h1>
             </div>
             <motion.p
@@ -97,7 +103,7 @@ export default function HeroSection() {
               transition={{ delay: 1, duration: 0.8 }}
               className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6"
             >
-              Frontend Developer & UI/UX Enthusiast
+              {PERSONAL_DETAILS.position}
             </motion.p>
             <motion.p
               initial={{ opacity: 0 }}
@@ -105,9 +111,7 @@ export default function HeroSection() {
               transition={{ delay: 1.2, duration: 0.8 }}
               className="text-muted-foreground mb-8 max-w-lg"
             >
-              I build exceptional digital experiences that are fast, accessible,
-              visually appealing, and responsive. Currently focused on building
-              responsive web applications while learning backend technologies.
+              {PERSONAL_DETAILS.description}
             </motion.p>
             <motion.div
               variants={container}
@@ -117,16 +121,12 @@ export default function HeroSection() {
             >
               <motion.a
                 variants={item}
-                href="#projects"
+                href={PERSONAL_DETAILS.cv_url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
               >
-                View My Work
+                Download CV
               </motion.a>
               <motion.a
                 variants={item}
@@ -139,20 +139,22 @@ export default function HeroSection() {
                     ?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
               >
-                Contact Me
+                Hire Me Now
               </motion.a>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.8, duration: 0.8 }}
-              className="flex mt-8 space-x-4"
+              className="flex mt-8 space-x-4 flex-wrap"
             >
               {socialLinks.map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300 text-2xl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300 text-2xl mr-2 mb-2"
                   aria-label={link.label}
                 >
                   {link.icon}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
+import { NAV_LINKS } from '@/lib/constants';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,7 +27,7 @@ export default function Header() {
       const sections = document.querySelectorAll('section[id]');
       
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100;
+        const sectionTop = (section as HTMLElement).offsetTop - 100;
         const sectionHeight = section.clientHeight;
         const sectionId = section.getAttribute('id');
         
@@ -52,13 +53,16 @@ export default function Header() {
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({
-        top: element.offsetTop - 80,
+        top: (element as HTMLElement).offsetTop - 80,
         behavior: 'smooth'
       });
     }
   };
 
   const headerBg = scrolled ? 'bg-dark/90 shadow-lg backdrop-blur-lg' : 'bg-dark/80 backdrop-blur-lg';
+
+  // Get section IDs from NAV_LINKS
+  const navItems = NAV_LINKS.map(link => link.path.substring(1));
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${headerBg}`}>
@@ -82,21 +86,24 @@ export default function Header() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="hidden md:flex space-x-8"
           >
-            {['home', 'about', 'projects', 'skills', 'contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item}`}
-                className={`nav-link text-white hover:text-primary transition-colors duration-300 ${
-                  activeSection === item ? 'active' : ''
-                }`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(item);
-                }}
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const id = link.path.substring(1);
+              return (
+                <a
+                  key={id}
+                  href={link.path}
+                  className={`nav-link text-white hover:text-primary transition-colors duration-300 ${
+                    activeSection === id ? 'active' : ''
+                  }`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(id);
+                  }}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
           </motion.nav>
           
           {/* Mobile Menu Button */}
@@ -115,23 +122,26 @@ export default function Header() {
       {/* Mobile Navigation */}
       <div
         className={`md:hidden bg-muted transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-60 py-4' : 'max-h-0 overflow-hidden'
+          isMenuOpen ? 'max-h-96 py-4' : 'max-h-0 overflow-hidden'
         }`}
       >
         <div className="container mx-auto px-4 flex flex-col space-y-4">
-          {['home', 'about', 'projects', 'skills', 'contact'].map((item) => (
-            <a
-              key={item}
-              href={`#${item}`}
-              className="text-white hover:text-primary transition-colors duration-300"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick(item);
-              }}
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const id = link.path.substring(1);
+            return (
+              <a
+                key={id}
+                href={link.path}
+                className="text-white hover:text-primary transition-colors duration-300"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(id);
+                }}
+              >
+                {link.name}
+              </a>
+            );
+          })}
         </div>
       </div>
     </header>

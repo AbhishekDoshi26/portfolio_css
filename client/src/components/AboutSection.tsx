@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { PERSONAL_DETAILS, STATS } from '@/lib/constants';
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaMediumM } from 'react-icons/fa';
 
 type Experience = {
   title: string;
@@ -8,24 +10,25 @@ type Experience = {
 };
 
 export default function AboutSection() {
+  // Flutter experience timeline
   const experiences: Experience[] = [
     {
-      title: "Senior Frontend Developer",
-      company: "Tech Company",
-      period: "2021 - Present",
-      description: "Leading frontend development for multiple projects. Working with React, Next.js, and Tailwind CSS. Implementing responsive design principles and ensuring accessibility."
+      title: "Google Developer Expert",
+      company: "Google",
+      period: "2022 - Present",
+      description: "Recognized as Google Developer Expert for Dart, Flutter, and Firebase. Contributing to Flutter community through blogs, talks, and mentorship."
     },
     {
-      title: "Frontend Developer",
-      company: "Digital Agency",
-      period: "2019 - 2021",
-      description: "Developed and maintained multiple client websites. Worked with JavaScript, React, and CSS frameworks. Collaborated with designers to implement pixel-perfect UIs."
+      title: "Senior Flutter Developer",
+      company: "Freelance & Consulting",
+      period: "2019 - Present",
+      description: "Working with clients worldwide to develop high-quality Flutter applications. Specializing in app and website development with Flutter and Firebase."
     },
     {
-      title: "UI/UX Designer",
-      company: "Startup",
-      period: "2018 - 2019",
-      description: "Created user interfaces and experiences for web and mobile applications. Conducted user research and testing. Worked with Figma and Adobe Creative Suite."
+      title: "Flutter Developer",
+      company: "Various Companies",
+      period: "2018 - 2022",
+      description: "Started journey with Flutter from its early days. Developed multiple applications across various domains including e-commerce, healthcare, and education."
     }
   ];
 
@@ -67,14 +70,31 @@ export default function AboutSection() {
             <h3 className="text-2xl font-bold mb-4">Who am I?</h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                I'm a passionate Frontend Developer from India with a strong eye for innovative design and a keen understanding of techniques geared toward optimum user experience.
+                {PERSONAL_DETAILS.about}
               </p>
               <p>
-                I enjoy turning complex problems into simple, beautiful and intuitive designs. When I'm not coding or pushing pixels, you'll find me cooking, reading, or exploring the outdoors.
+                <span className="font-semibold">Have an app idea?</span> Let's get it done!
               </p>
               <p>
-                I am also passionate about creating accessible, user-friendly interfaces. I believe that good design should work for everyone, regardless of their abilities or the device they're using.
+                You can also follow me here:
               </p>
+              <div className="flex space-x-4 mt-3">
+                <a href="https://github.com/AbhishekDoshi26" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary text-xl transition-colors">
+                  <FaGithub />
+                </a>
+                <a href="https://www.linkedin.com/in/abhishekdoshi26/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary text-xl transition-colors">
+                  <FaLinkedin />
+                </a>
+                <a href="https://twitter.com/AbhishekDoshi26" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary text-xl transition-colors">
+                  <FaTwitter />
+                </a>
+                <a href="https://www.instagram.com/abhishekdoshi26/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary text-xl transition-colors">
+                  <FaInstagram />
+                </a>
+                <a href="https://abhishekdoshi26.medium.com/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary text-xl transition-colors">
+                  <FaMediumM />
+                </a>
+              </div>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -94,6 +114,23 @@ export default function AboutSection() {
                 Let's Talk
               </a>
             </motion.div>
+
+            {/* Stats counters */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
+              {STATS.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
+                  className="text-center"
+                >
+                  <div className="text-4xl font-bold text-primary mb-2">{stat.number}</div>
+                  <p className="text-muted-foreground">{stat.label}</p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 30 }}
