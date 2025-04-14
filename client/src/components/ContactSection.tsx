@@ -234,16 +234,16 @@ export default function ContactSection() {
                   <div>
                     <h4 className="font-semibold">Social Profiles</h4>
                     <div className="flex mt-2 space-x-4">
-                      <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="GitHub">
+                      <a href="/github" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="GitHub">
                         <FaGithub className="text-xl" />
                       </a>
-                      <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="LinkedIn">
+                      <a href="/linkedin" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="LinkedIn">
                         <FaLinkedin className="text-xl" />
                       </a>
-                      <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="Twitter">
+                      <a href="/twitter" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="Twitter">
                         <FaTwitter className="text-xl" />
                       </a>
-                      <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="Instagram">
+                      <a href="/instagram" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="Instagram">
                         <FaInstagram className="text-xl" />
                       </a>
                     </div>
