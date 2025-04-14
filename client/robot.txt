@@ -1,0 +1,12 @@
+# robots.txt for https://abhishekdoshi.dev
+
+# Allow all robots to crawl the entire site
+User-agent: *
+Disallow: /admin/
+
+# Block specific crawlers (Optional example)
+# User-agent: BadBot
+# Disallow: /
+
+# Sitemap URL
+Sitemap: https://abhishekdoshi.dev/sitemap.xml
