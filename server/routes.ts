@@ -14,6 +14,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/instagram", (_, res) => res.redirect(SOCIAL_LINKS.instagram));
   app.get("/medium", (_, res) => res.redirect(SOCIAL_LINKS.medium));
   app.get("/calendly", (_, res) => res.redirect(SOCIAL_LINKS.calendly));
+  app.get("/cv", (_, res) => res.redirect(PERSONAL_DETAILS.cv_url));
   // Contact form endpoint
   app.post("/api/contact", async (req: Request, res: Response) => {
     try {
