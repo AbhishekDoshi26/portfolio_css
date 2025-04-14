@@ -139,14 +139,14 @@ export const FLUTTER_PACKAGES = [
     description: "A Flutter package that establishes hierarchy in checkboxes, creating parent-child relationships with synchronized selection states.",
     github: "https://github.com/AbhishekDoshi26/parent-child-checkbox",
     pub: "https://pub.dev/packages/parent_child_checkbox",
-    stars: "15+"
+    stars: "40+"
   },
   {
     name: "super_extensions",
     description: "A comprehensive Flutter package that supports the most commonly used extension methods to boost development productivity.",
     github: "https://github.com/AbhishekDoshi26/super_extensions",
     pub: "https://pub.dev/packages/super_extensions",
-    stars: "20+"
+    stars: "10+""
   }
 ];
 
