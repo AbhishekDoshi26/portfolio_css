@@ -16,7 +16,8 @@ export const NAV_LINKS = [
   { name: 'About', path: '#about' },
   { name: 'Testimonials', path: '#testimonials' },
   { name: 'Packages', path: '#packages' },
-  { name: 'Blog', path: '#blog' }
+  { name: 'Blog', path: '#blog' },
+  { name: 'Contact', path: '#contact' }
 ];
 
 export const PERSONAL_DETAILS = {
