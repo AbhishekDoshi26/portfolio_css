@@ -4,8 +4,16 @@ import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import { SOCIAL_LINKS } from "../client/src/lib/constants";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Social profile redirects
+  app.get("/linkedin", (_, res) => res.redirect(SOCIAL_LINKS.linkedin));
+  app.get("/github", (_, res) => res.redirect(SOCIAL_LINKS.github));
+  app.get("/twitter", (_, res) => res.redirect(SOCIAL_LINKS.twitter));
+  app.get("/instagram", (_, res) => res.redirect(SOCIAL_LINKS.instagram));
+  app.get("/medium", (_, res) => res.redirect(SOCIAL_LINKS.medium));
+  app.get("/calendly", (_, res) => res.redirect(SOCIAL_LINKS.calendly));
   // Contact form endpoint
   app.post("/api/contact", async (req: Request, res: Response) => {
     try {
