@@ -114,7 +114,7 @@ export const BLOG_POSTS = [
     title: "Records & Patterns — Dart | Flutter",
     date: "February 22, 2023",
     url: "https://medium.com/google-developer-experts/records-patterns-824447a9f2b1",
-    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*yQ35rZHq_L9b6iSyXAsHzg.png", 
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZpQmrMxB7UE53ufQlm_ZwA.png",
     category: "dart"
   },
   {
