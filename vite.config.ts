@@ -5,6 +5,7 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
+  base: '/',  // Ensure base is set to the root, since Firebase serves at the root of the domain.
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -30,5 +31,4 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
-  base: '/portfolio_css/', // Set the correct base for GitHub Pages
 });

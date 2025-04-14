@@ -1,0 +1,42 @@
+{
+  "hosting": {
+    "public": "dist/public",  // Make sure this is your build folder
+    "redirects": [
+      {
+        "source": "/linkedin",
+        "destination": "https://www.linkedin.com/in/abhishekdoshi26/",
+        "type": 301
+      },
+      {
+        "source": "/github",
+        "destination": "https://github.com/AbhishekDoshi26",
+        "type": 301
+      },
+      {
+        "source": "/twitter",
+        "destination": "https://twitter.com/AbhishekDoshi26",
+        "type": 301
+      },
+      {
+        "source": "/instagram",
+        "destination": "https://www.instagram.com/abhishekdoshi26/",
+        "type": 301
+      },
+      {
+        "source": "/medium",
+        "destination": "https://abhishekdoshi26.medium.com/",
+        "type": 301
+      },
+      {
+        "source": "/calendly",
+        "destination": "https://calendly.com/abhishekdoshi26",
+        "type": 301
+      },
+      {
+        "source": "/cv",
+        "destination": "https://drive.google.com/file/d/1ZcpXka01BQz6Rd1cyQtV9SqcegH5hh3l/view?usp=sharing",  
+        "type": 301
+      }
+    ]
+  }
+}

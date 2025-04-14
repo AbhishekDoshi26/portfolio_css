@@ -101,10 +101,11 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6"
+              className="text-lg sm:text-xl md:text-2xl text-white font-bold mb-6"
             >
               {PERSONAL_DETAILS.position}
             </motion.p>
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
