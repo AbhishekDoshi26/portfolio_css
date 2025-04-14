@@ -82,7 +82,7 @@ export default function HeroSection() {
       className="min-h-screen flex items-center justify-center pt-20"
     >
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col-reverse md:flex-row items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -92,19 +92,21 @@ export default function HeroSection() {
             <div className="mb-4">
               <h1
                 ref={typingRef}
-                className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
+                className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight"
               >
                 <span className="text-gradient">{PERSONAL_DETAILS.intro}</span>
               </h1>
+
             </div>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6"
+              className="text-lg sm:text-xl md:text-2xl text-white font-bold mb-6"
             >
               {PERSONAL_DETAILS.position}
             </motion.p>
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -139,7 +141,7 @@ export default function HeroSection() {
                     ?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
               >
-                Hire Me Now
+                Reach Out To Me
               </motion.a>
             </motion.div>
             <motion.div
@@ -166,7 +168,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="w-full md:w-1/2 flex justify-center"
+            className="w-full md:w-1/2 flex justify-center mb-10 md:mb-0"
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg shadow-primary/20">
               <svg

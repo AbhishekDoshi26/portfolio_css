@@ -23,7 +23,7 @@ export const NAV_LINKS = [
 export const PERSONAL_DETAILS = {
   name: 'Abhishek',
   position: 'Google Developer Expert',
-  intro: "Hi! I'm Abhishek",
+  intro: "Hi! I'm Abhishek Doshi",
   description: "Google Developer Expert for Dart, Flutter & Firebase. Working with Flutter and Firebase for over 6 years. With deep expertise in mobile development, I can bring your app ideas to life. Community Leader & Content Creator passionate about teaching and sharing knowledge.",
   about: "Flutter Developer and Google Developer Expert (GDE) for Dart, Flutter & Firebase working in app development for 6+ years, specialized in creating beautiful, high-performance mobile and web applications with Flutter. With extensive experience, I transform your vision into reality and give your app a soul that resonates with users. Let's collaborate and bring your ideas to life with cutting-edge technology.",
   linkedinShort: "linkedin.com/in/abhishekdoshi26",

@@ -100,9 +100,6 @@ export default function Footer() {
         
         <div className="mt-8 pt-6 border-t border-primary/10 text-center text-muted-foreground text-sm">
           <p>&copy; {new Date().getFullYear()} {PERSONAL_DETAILS.name}. All Rights Reserved.</p>
-          <p className="mt-1">
-            Built with <span className="text-primary">❤</span> using React & Tailwind CSS
-          </p>
         </div>
       </div>
     </footer>

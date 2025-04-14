@@ -1,3 +1,4 @@
+import { PERSONAL_DETAILS } from "@/lib/constants";
 import { motion } from "framer-motion";
 import {
   FaMapMarkerAlt,
@@ -159,7 +160,7 @@ export default function ContactSection() {
               className="mt-8"
             >
               <a
-                href="#"
+                href={PERSONAL_DETAILS.cv_url}
                 className="inline-block bg-transparent hover:bg-primary/10 text-primary font-semibold py-3 px-6 border border-primary rounded-lg transition-all duration-300 w-full text-center"
               >
                 Download Resume
