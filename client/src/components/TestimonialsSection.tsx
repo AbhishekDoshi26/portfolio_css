@@ -55,7 +55,7 @@ export default function TestimonialsSection() {
         
         <div className="flex items-center justify-between mt-auto pt-5 border-t border-primary/10">
           <div className="flex items-center">
-            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/40 mr-4 shadow-md shadow-primary/10">
+            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/40 mr-4 shadow-md shadow-primary/10 flex-shrink-0">
               <img 
                 src={testimonial.image} 
                 alt={testimonial.name} 
@@ -145,46 +145,7 @@ export default function TestimonialsSection() {
             <FaChevronRight className="text-lg text-primary" />
           </button>
           
-          {/* Dots indicator */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex justify-center mt-8">
-            <div className="flex space-x-3 bg-muted/40 backdrop-blur-sm py-1.5 px-4 rounded-full shadow-inner border border-primary/5">
-              {selectedIndex > 0 && (
-                <button
-                  onClick={() => emblaApi?.scrollTo(0)}
-                  className="text-xs text-primary/70 hover:text-primary px-1"
-                  aria-label="Go to first testimonial"
-                >
-                  «
-                </button>
-              )}
-              
-              {Array.from({ length: 5 }).map((_, i) => {
-                const index = Math.max(0, Math.min(selectedIndex - 2 + i, TESTIMONIALS.length - 1));
-                return (
-                  <button
-                    key={index}
-                    onClick={() => emblaApi?.scrollTo(index)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      selectedIndex === index 
-                        ? 'bg-primary scale-125 shadow-md' 
-                        : 'bg-gray-400/50 hover:bg-gray-400'
-                    }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                );
-              })}
-              
-              {selectedIndex < TESTIMONIALS.length - 1 && (
-                <button
-                  onClick={() => emblaApi?.scrollTo(TESTIMONIALS.length - 1)}
-                  className="text-xs text-primary/70 hover:text-primary px-1"
-                  aria-label="Go to last testimonial"
-                >
-                  »
-                </button>
-              )}
-            </div>
-          </div>
+          {/* Navigation buttons are enough, removing dots indicator */}
         </div>
       </div>
 
