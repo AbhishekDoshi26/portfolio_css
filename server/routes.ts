@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
-import { SOCIAL_LINKS } from "../client/src/lib/constants";
+import { SOCIAL_LINKS, PERSONAL_DETAILS } from "../client/src/lib/constants";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Social profile redirects
