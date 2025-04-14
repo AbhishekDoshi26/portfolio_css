@@ -52,13 +52,13 @@ export default function HeroSection() {
   };
 
   const socialLinks = [
-    { icon: <FaGithub />, url: SOCIAL_LINKS.github, label: "GitHub" },
-    { icon: <FaLinkedin />, url: SOCIAL_LINKS.linkedin, label: "LinkedIn" },
-    { icon: <FaTwitter />, url: SOCIAL_LINKS.twitter, label: "Twitter" },
-    { icon: <FaInstagram />, url: SOCIAL_LINKS.instagram, label: "Instagram" },
-    { icon: <FaMediumM />, url: SOCIAL_LINKS.medium, label: "Medium" },
+    { icon: <FaGithub />, url: "/github", label: "GitHub" },
+    { icon: <FaLinkedin />, url: "/linkedin", label: "LinkedIn" },
+    { icon: <FaTwitter />, url: "/twitter", label: "Twitter" },
+    { icon: <FaInstagram />, url: "/instagram", label: "Instagram" },
+    { icon: <FaMediumM />, url: "/medium", label: "Medium" },
     { icon: <FaEnvelope />, url: SOCIAL_LINKS.email, label: "Email" },
-    { icon: <FaCalendarAlt />, url: SOCIAL_LINKS.calendly, label: "Calendly" },
+    { icon: <FaCalendarAlt />, url: "/calendly", label: "Calendly" },
   ];
 
   const container = {

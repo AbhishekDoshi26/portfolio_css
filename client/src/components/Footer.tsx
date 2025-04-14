@@ -44,7 +44,7 @@ export default function Footer() {
           
           <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
             <a 
-              href={SOCIAL_LINKS.github} 
+              href="/github" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-muted-foreground hover:text-primary transition-colors duration-300" 
@@ -53,7 +53,7 @@ export default function Footer() {
               <FaGithub className="text-xl" />
             </a>
             <a 
-              href={SOCIAL_LINKS.linkedin} 
+              href="/linkedin" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-muted-foreground hover:text-primary transition-colors duration-300" 
@@ -62,7 +62,7 @@ export default function Footer() {
               <FaLinkedin className="text-xl" />
             </a>
             <a 
-              href={SOCIAL_LINKS.twitter} 
+              href="/twitter" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-muted-foreground hover:text-primary transition-colors duration-300" 
@@ -71,7 +71,7 @@ export default function Footer() {
               <FaTwitter className="text-xl" />
             </a>
             <a 
-              href={SOCIAL_LINKS.instagram} 
+              href="/instagram" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-muted-foreground hover:text-primary transition-colors duration-300" 
@@ -80,7 +80,7 @@ export default function Footer() {
               <FaInstagram className="text-xl" />
             </a>
             <a 
-              href={SOCIAL_LINKS.medium} 
+              href="/medium" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-muted-foreground hover:text-primary transition-colors duration-300" 
