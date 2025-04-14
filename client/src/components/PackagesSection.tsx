@@ -75,8 +75,8 @@ export default function PackagesSection() {
               </div>
 
               <div className="flex items-center mb-4">
-                <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary to-primary/60 rounded-xl mr-4">
-                  <SiFlutter className="text-white text-lg" />
+                <div className="w-[40px] h-[40px] flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-primary to-primary/60 rounded-xl mr-4">
+                  <SiFlutter className="text-white w-5 h-5" />
                 </div>
                 <h3 className="text-xl font-bold">{pkg.name}</h3>
               </div>
