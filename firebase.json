@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/public",  // Make sure this is your build folder
+    "public": "dist/public",
     "redirects": [
       {
         "source": "/linkedin",
