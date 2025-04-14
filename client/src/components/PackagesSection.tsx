@@ -71,12 +71,12 @@ export default function PackagesSection() {
             >
               <div className="absolute top-4 right-4 flex items-center text-primary/70 font-medium">
                 <FaStar className="mr-1 text-amber-400 animate-pulse" />
-                <span>{pkg.stars}</span>
+                <span>{pkg.name === 'parent_child_checkbox' ? '40+' : pkg.name === 'super_extensions' ? '10+' : pkg.stars}</span>
               </div>
 
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-primary to-primary/60 rounded-xl mr-4">
-                  <SiFlutter className="text-white text-xl" />
+                <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary to-primary/60 rounded-xl mr-4">
+                  <SiFlutter className="text-white text-lg" />
                 </div>
                 <h3 className="text-xl font-bold">{pkg.name}</h3>
               </div>
