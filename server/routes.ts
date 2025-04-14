@@ -5,6 +5,7 @@ import { insertContactSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
 import { SOCIAL_LINKS, PERSONAL_DETAILS } from "../client/src/lib/constants";
+import nodemailer from 'nodemailer';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Social profile redirects
@@ -21,13 +22,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate the request body
       const contactData = insertContactSchema.parse(req.body);
       
-      // Save the contact message
-      const message = await storage.createContactMessage(contactData);
+      // Create nodemailer transporter
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'adoshi26.ad@gmail.com',
+          pass: process.env.EMAIL_PASSWORD // You'll need to set this up in Secrets
+        }
+      });
+
+      // Setup email data
+      const mailOptions = {
+        from: contactData.email,
+        to: 'adoshi26.ad@gmail.com',
+        subject: `Portfolio Contact: ${contactData.subject}`,
+        text: `Name: ${contactData.name}\nEmail: ${contactData.email}\nMessage: ${contactData.message}`
+      };
+
+      // Send email
+      await transporter.sendMail(mailOptions);
       
       // Return success response
       return res.status(200).json({
-        message: "Contact message sent successfully",
-        id: message.id
+        message: "Contact message sent successfully"
       });
     } catch (error) {
       if (error instanceof ZodError) {
