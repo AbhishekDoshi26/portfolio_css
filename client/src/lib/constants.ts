@@ -146,7 +146,7 @@ export const FLUTTER_PACKAGES = [
     description: "A comprehensive Flutter package that supports the most commonly used extension methods to boost development productivity.",
     github: "https://github.com/AbhishekDoshi26/super_extensions",
     pub: "https://pub.dev/packages/super_extensions",
-    stars: "10+""
+    stars: "10+"
   }
 ];
 
