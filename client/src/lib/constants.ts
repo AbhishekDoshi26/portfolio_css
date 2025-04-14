@@ -76,6 +76,20 @@ export const STATS = [
 
 export const BLOG_POSTS = [
   {
+    title: "Flutter Deep Links – A custom solution!",
+    date: "January 4, 2025",
+    url: "https://medium.com/google-developer-experts/deep-links-08f127916554",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Hg4aZhdTuz65yUiFdRv2QA.png",
+    category: "flutter"
+  },
+  {
+    title: "Google Checks: Simplifying Privacy Compliance",
+    date: "August 3, 2024",
+    url: "https://abhishekdoshi26.medium.com/google-checks-simplifying-privacy-compliance-74512f527dc0",
+    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*tsDUX1y71EUGbQar",
+    category: "security"
+  },
+  {
     title: "WASM + Flutter Web — Let's understand it!",
     date: "June 15, 2024",
     url: "https://medium.com/@abhishekdoshi26/wasm-650ca52f04df",
