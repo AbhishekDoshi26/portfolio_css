@@ -203,7 +203,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold">Location</h4>
-                    <p className="text-muted-foreground">Mumbai, Maharashtra, India</p>
+                    <p className="text-muted-foreground">India</p>
                   </div>
                 </motion.div>
                 
@@ -213,17 +213,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold">Email</h4>
-                    <a href="mailto:hello@abhishekdoshi.dev" className="text-muted-foreground hover:text-primary transition-colors duration-300">hello@abhishekdoshi.dev</a>
-                  </div>
-                </motion.div>
-                
-                <motion.div variants={item} className="flex items-start">
-                  <div className="bg-primary/20 p-3 rounded-lg mr-4">
-                    <FaPhone className="text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Phone</h4>
-                    <a href="tel:+919876543210" className="text-muted-foreground hover:text-primary transition-colors duration-300">+91 98765 43210</a>
+                    <a href="mailto:adoshi26.ad@gmail.com" className="text-muted-foreground hover:text-primary transition-colors duration-300">adoshi26.ad@gmail.com</a>
                   </div>
                 </motion.div>
                 
