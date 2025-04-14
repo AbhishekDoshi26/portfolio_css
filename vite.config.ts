@@ -30,4 +30,5 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
+  base: '/portfolio_css/', // Set the correct base for GitHub Pages
 });
