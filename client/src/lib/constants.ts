@@ -29,7 +29,7 @@ export const PERSONAL_DETAILS = {
   linkedinShort: "linkedin.com/in/abhishekdoshi26",
   email: "adoshi26.ad@gmail.com",
   phone: "+917818044311",
-  cv_url: "https://drive.google.com/file/d/1ZcpXka01BQz6Rd1cyQtV9SqcegH5hh3l/view?usp=sharing"
+  cv_url: "https://drive.google.com/file/d/1e_9spCmmOcYfW6kyoOCys-PT55EilMzL/view?usp=sharing"
 };
 
 export const COLORS = {
