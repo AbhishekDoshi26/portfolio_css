@@ -116,7 +116,7 @@ export default function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="py-32 md:py-48 relative overflow-hidden">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -127,10 +127,10 @@ export default function TestimonialsSection() {
             <FaQuoteLeft className="animate-pulse" />
             Social Proof
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-8">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
             Kind <span className="text-gradient-primary">Words</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-xl leading-relaxed mb-10">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg md:text-xl leading-relaxed mb-10">
             {AppTestimonials.testimonials.length}+ collaborators and tech leaders from around the globe have shared their experience working with me.
           </p>
           <a
@@ -164,10 +164,10 @@ export default function TestimonialsSection() {
                   style={{ scrollSnapAlign: "start" }}
                 >
                   <div
-                    className="glass-card p-12 h-full flex flex-col items-start text-left cursor-pointer group relative overflow-hidden"
+                    className="glass-card p-8 md:p-12 h-full flex flex-col items-start text-left cursor-pointer group relative overflow-hidden"
                     onClick={() => openFullTestimonial(index)}
                   >
-                    <FaQuoteLeft className="absolute -top-4 -right-4 text-foreground/[0.03] text-[10rem] pointer-events-none group-hover:text-primary/5 transition-colors" />
+                    <FaQuoteLeft className="absolute -top-4 -right-4 text-foreground/[0.03] text-[6rem] md:text-[10rem] pointer-events-none group-hover:text-primary/5 transition-colors" />
 
                     <div className="mb-10 relative">
                       <FaQuoteLeft className="text-primary text-4xl opacity-50 mb-6" />
@@ -251,7 +251,7 @@ export default function TestimonialsSection() {
       {/* Expansion Modal */}
       <AnimatePresence>
         {state.expandedIndex !== null && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-12">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -264,7 +264,7 @@ export default function TestimonialsSection() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="glass p-8 md:p-16 rounded-[3rem] max-w-4xl w-full relative z-10 border border-border/50 shadow-2xl"
+              className="glass p-6 md:p-16 rounded-[2rem] md:rounded-[3rem] max-w-4xl w-[95%] md:w-full relative z-10 border border-border/50 shadow-2xl flex flex-col max-h-[90vh]"
             >
               {(() => {
                 const expandedTestimonial = AppTestimonials.testimonials[state.expandedIndex!];
@@ -274,18 +274,20 @@ export default function TestimonialsSection() {
                   <>
                     <button
                       onClick={closeFullTestimonial}
-                      className="absolute top-8 right-8 text-muted-foreground hover:text-foreground transition-colors p-3 hover:bg-accent rounded-full"
+                      className="absolute top-4 right-4 md:top-8 md:right-8 text-muted-foreground hover:text-foreground transition-colors p-3 bg-accent/30 hover:bg-accent rounded-full z-20"
                     >
-                      <FaTimes size={24} />
+                      <FaTimes size={20} className="md:w-6 md:h-6" />
                     </button>
 
-                    <FaQuoteLeft className="text-primary text-6xl opacity-30 mb-10" />
-                    <p className="text-2xl md:text-3xl text-foreground leading-[1.6] font-medium italic mb-16 whitespace-pre-line">
-                      "{expandedTestimonial.testimonial}"
-                    </p>
+                    <div className="flex-1 overflow-y-auto pr-4 mb-10 md:mb-16 scrollbar-hide">
+                      <FaQuoteLeft className="text-primary text-4xl md:text-6xl opacity-30 mb-6 md:mb-10" />
+                      <p className="text-xl md:text-3xl text-foreground leading-[1.6] font-medium italic whitespace-pre-line">
+                        "{expandedTestimonial.testimonial}"
+                      </p>
+                    </div>
 
-                    <div className="flex items-center gap-6">
-                      <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 p-1">
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-primary/20 p-1 shrink-0">
                         <div className="w-full h-full rounded-full overflow-hidden">
                           <img
                             src={avatarUrl}
@@ -294,12 +296,22 @@ export default function TestimonialsSection() {
                           />
                         </div>
                       </div>
-                      <div>
-                        <h4 className="text-3xl font-bold text-foreground mb-2">{expandedTestimonial.name}</h4>
-                        <p className="text-primary font-bold tracking-widest uppercase text-sm">
+                      <div className="flex-1 min-w-[200px]">
+                        <h4 className="text-2xl md:text-3xl font-bold text-foreground mb-1 md:mb-2">{expandedTestimonial.name}</h4>
+                        <p className="text-primary font-bold tracking-widest uppercase text-[0.7rem] md:text-sm">
                           {expandedTestimonial.position}
                         </p>
                       </div>
+                      {expandedTestimonial.linkedin && (
+                        <a
+                          href={expandedTestimonial.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-12 h-12 rounded-full bg-accent/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-accent/60 transition-all shrink-0"
+                        >
+                          <FaLinkedin size={22} />
+                        </a>
+                      )}
                     </div>
                   </>
                 );
