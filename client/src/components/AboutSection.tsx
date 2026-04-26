@@ -1,24 +1,12 @@
 import { motion } from "framer-motion";
-import { PERSONAL_DETAILS, STATS } from "@/lib/constants";
+import { AppPersonalDetails, AppStats } from "@/lib/constants";
 import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaInstagram,
-  FaMediumM,
   FaCode,
-  FaBook,
   FaMobile,
   FaCloud,
   FaUsers,
+  FaQuoteLeft,
 } from "react-icons/fa";
-
-type Experience = {
-  title: string;
-  company: string;
-  period: string;
-  description: string;
-};
 
 type Service = {
   title: string;
@@ -27,274 +15,145 @@ type Service = {
 };
 
 export default function AboutSection() {
-  // Flutter experience timeline
-  const experiences: Experience[] = [
-    {
-      title: "Google Developer Expert",
-      company: "Google",
-      period: "2021 - Present",
-      description:
-        "Recognized as Google Developer Expert (GDE) for Dart, Flutter, and Firebase. Actively contributing to the Flutter ecosystem through technical blogs, conference talks, and mentorship programs. Helping companies and developers adopt Flutter best practices.",
-    },
-    {
-      title: "Senior Flutter Developer",
-      company: "Freelance & Consulting",
-      period: "2021 - Present",
-      description:
-        "Working with clients globally to develop high-performance Flutter applications. Specializing in complex app architecture, state management solutions, and cross-platform development. Delivered over 40 successful projects with exceptional client satisfaction.",
-    },
-    {
-      title: "Flutter Developer",
-      company: "Various Companies",
-      period: "2018 - 2021",
-      description:
-        "Started my journey with Flutter from its early days. Developed applications across diverse domains including e-commerce, healthcare, education, and fintech. Built a strong foundation in mobile app development and contributed to open source Flutter packages.",
-    },
-  ];
-
-  // Services offered
   const services: Service[] = [
     {
       title: "Flutter Development",
-      icon: <FaCode className="text-primary text-3xl" />,
-      description:
-        "Expert Flutter development for mobile, web, and desktop applications with clean architecture and robust state management.",
+      icon: <FaCode className="text-3xl" />,
+      description: "Building cross-platform mobile, web, and desktop apps with premium performance.",
     },
     {
-      title: "Firebase Integration",
-      icon: <FaCloud className="text-primary text-3xl" />,
-      description:
-        "Seamless integration of Firebase services including Authentication, Firestore, Cloud Functions, and Analytics for scalable backends.",
+      title: "Backend Architecture",
+      icon: <FaCloud className="text-3xl" />,
+      description: "Designing scalable cloud infrastructures and real-time database integrations.",
     },
     {
       title: "App Optimization",
-      icon: <FaMobile className="text-primary text-3xl" />,
-      description:
-        "Performance optimization for Flutter apps, ensuring smooth animations, reduced build size, and efficient resource usage.",
+      icon: <FaMobile className="text-3xl" />,
+      description: "Performance engineering and smooth 120fps motion design for high-end devices.",
     },
     {
-      title: "Technical Consultation",
-      icon: <FaUsers className="text-primary text-3xl" />,
-      description:
-        "Strategic guidance on app architecture, technology choices, and development workflows for teams adopting Flutter.",
+      title: "Product Strategy",
+      icon: <FaUsers className="text-3xl" />,
+      description: "Advising startups and enterprises on mobile roadmaps and technical architecture.",
     },
   ];
 
-  const container = {
-    hidden: { opacity: 0 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
     show: {
       opacity: 1,
+      y: 0,
       transition: {
-        staggerChildren: 0.2,
+        type: "spring",
+        damping: 30,
+        stiffness: 80,
       },
     },
   };
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
-    <section id="about" className="py-20 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
+    <section id="about" className="py-32 md:py-48 relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
+          className="text-center mb-24"
         >
-          About <span className="text-gradient">Me</span>
-        </motion.h2>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+            The <span className="text-gradient-primary">Craftsman</span> behind the code
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-xl leading-relaxed">
+            A decade of pushing the boundaries of mobile experiences, one pixel at a time.
+          </p>
+        </motion.div>
 
-        <div className="flex flex-col md:flex-row md:space-x-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Main About Card */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="w-full md:w-1/2 mb-8 md:mb-0"
+            className="lg:col-span-8 glass-card p-10 md:p-16 flex flex-col justify-center relative overflow-hidden group"
           >
-            <div className="bg-background p-6 rounded-xl shadow-lg h-full">
-              <h3 className="text-2xl font-bold mb-4 flex items-center">
-                <FaBook className="mr-2 text-primary" /> Who am I?
+            <div className="absolute top-0 right-0 p-12 text-primary/5 group-hover:text-primary/10 transition-colors duration-700">
+              <FaQuoteLeft className="text-[12rem] -rotate-12" />
+            </div>
+
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-3 mb-10 px-4 py-2 rounded-full bg-accent/50 border border-border">
+                <div className="w-2 h-2 rounded-full bg-primary" />
+                <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Who I Am</span>
+              </div>
+
+              <h3 className="text-3xl md:text-4xl font-bold mb-10 leading-[1.3] tracking-tight text-foreground">
+                {AppPersonalDetails.intro}
               </h3>
-              <div className="space-y-4 text-muted-foreground">
-                <p className="leading-relaxed">{PERSONAL_DETAILS.about}</p>
-                <p className="leading-relaxed">
-                  <span className="font-semibold text-white">
-                    Have an app idea?
-                  </span>{" "}
-                  Let's transform it into reality with Flutter's power and
-                  flexibility!
-                </p>
-                <p>Connect with me on social media:</p>
-                <div className="flex space-x-5 mt-3">
-                  <a
-                    href="https://github.com/AbhishekDoshi26"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary text-xl transition-colors duration-300"
-                  >
-                    <FaGithub />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/abhishekdoshi26/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary text-xl transition-colors duration-300"
-                  >
-                    <FaLinkedin />
-                  </a>
-                  <a
-                    href="https://twitter.com/AbhishekDoshi26"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary text-xl transition-colors duration-300"
-                  >
-                    <FaTwitter />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/abhishekdoshi26/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary text-xl transition-colors duration-300"
-                  >
-                    <FaInstagram />
-                  </a>
-                  <a
-                    href="https://abhishekdoshi26.medium.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary text-xl transition-colors duration-300"
-                  >
-                    <FaMediumM />
-                  </a>
+
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-12 max-w-3xl">
+                {AppPersonalDetails.about}
+              </p>
+
+              <div className="flex items-center gap-6 pt-10 border-t border-border/50">
+                <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 shadow-[0_0_30px_rgba(var(--primary-rgb),0.2)]">
+                  <span className="text-primary font-bold text-lg">AD</span>
+                </div>
+                <div>
+                  <p className="font-bold text-xl text-foreground">{AppPersonalDetails.fullName}</p>
+                  <p className="text-primary/80 font-bold tracking-widest text-xs uppercase">{AppPersonalDetails.position}</p>
                 </div>
               </div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                className="mt-8"
-              >
-                <a
-                  href="#contact"
-                  className="inline-block bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
-                >
-                  Let's Talk
-                </a>
-              </motion.div>
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="w-full md:w-1/2"
-          >
-            <div className="bg-background p-6 rounded-xl shadow-lg h-full">
-              <h3 className="text-2xl font-bold mb-6">My Journey</h3>
+          {/* Stats Column */}
+          <div className="lg:col-span-4 grid gap-8">
+            {AppStats.stats.map((stat, index) => (
               <motion.div
-                variants={container}
+                key={index}
+                variants={itemVariants}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="space-y-6"
+                transition={{ delay: index * 0.1 }}
+                className="glass-card p-10 flex flex-col items-center justify-center text-center group hover:bg-accent/40 transition-colors"
               >
-                {experiences.map((exp, index) => (
-                  <motion.div
-                    key={index}
-                    variants={item}
-                    className="flex group"
-                  >
-                    <div className="mr-4 flex-shrink-0">
-                      <div className="w-4 h-4 rounded-full bg-primary mt-1 group-hover:scale-125 transition-transform duration-300"></div>
-                      {index < experiences.length - 1 && (
-                        <div className="w-0.5 h-full bg-primary/30 ml-2"></div>
-                      )}
-                    </div>
-                    <div
-                      className={index < experiences.length - 1 ? "pb-6" : ""}
-                    >
-                      <h4 className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">
-                        {exp.title}
-                      </h4>
-                      <p className="text-primary text-sm">
-                        {exp.company} | {exp.period}
-                      </p>
-                      <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                        {exp.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                <div className="text-5xl md:text-6xl font-bold text-gradient-primary mb-4 group-hover:scale-110 transition-transform duration-500">
+                  {stat.number}+
+                </div>
+                <div className="text-muted-foreground font-bold tracking-[0.3em] uppercase text-[10px]">
+                  {stat.label}
+                </div>
               </motion.div>
-            </div>
-          </motion.div>
+            ))}
+          </div>
+
+          {/* Services Grid (Wide) */}
+          <div className="lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="glass-card p-10 flex flex-col gap-8 group hover:bg-accent/40 transition-all"
+              >
+                <div className="w-16 h-16 rounded-3xl bg-accent/50 flex items-center justify-center border border-border group-hover:bg-primary/20 group-hover:border-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 text-primary">
+                  {service.icon}
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{service.title}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-
-        {/* Stats counters */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
-          {STATS.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
-              className="bg-background p-6 rounded-xl text-center shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="text-5xl font-bold text-gradient mb-2">
-                {stat.number}+
-              </div>
-              <p className="text-muted-foreground font-medium">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Services */}
-        <motion.h3
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl md:text-3xl font-bold text-center mb-8"
-        >
-          Services I <span className="text-gradient">Offer</span>
-        </motion.h3>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              className="bg-background p-6 rounded-xl shadow-lg hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center"
-            >
-              <div className="mb-4">{service.icon}</div>
-              <h4 className="text-lg font-bold mb-2">{service.title}</h4>
-              <p className="text-muted-foreground text-sm">
-                {service.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Debug Client (Chrome)",
+      "url": "http://127.0.0.1:5173",
+      "webRoot": "${workspaceFolder}/client",
+      "preLaunchTask": "npm: dev",
+      "sourceMaps": true,
+      "timeout": 30000,
+      "sourceMapOverrides": {
+        "webpack:///./src/*": "${webRoot}/src/*",
+        "webpack:///src/*": "${webRoot}/src/*",
+        "/@fs/*": "*"
+      },
+      "userDataDir": false
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Backend",
+      "port": 9229,
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    }
+  ]
+}

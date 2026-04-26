@@ -1,243 +1,311 @@
-import { useState, useCallback, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaQuoteLeft, FaTimes, FaExpand, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { TESTIMONIALS } from '@/lib/constants';
-import useEmblaCarousel from 'embla-carousel-react';
+import { useReducer, useRef, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaQuoteLeft, FaTimes, FaChevronLeft, FaChevronRight, FaLinkedin } from "react-icons/fa";
+import { AppTestimonials, AppSocialLinks } from "@/lib/constants";
+
+type State = {
+  expandedIndex: number | null;
+  selectedIndex: number;
+  canScrollPrev: boolean;
+  canScrollNext: boolean;
+};
+
+type Action =
+  | { type: "SET_EXPANDED"; payload: number | null }
+  | { type: "SET_SELECTED_INDEX"; payload: number }
+  | { type: "SET_SCROLL_STATUS"; payload: { prev: boolean; next: boolean } };
+
+function testimonialReducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "SET_EXPANDED":
+      return { ...state, expandedIndex: action.payload };
+    case "SET_SELECTED_INDEX":
+      return { ...state, selectedIndex: action.payload };
+    case "SET_SCROLL_STATUS":
+      return {
+        ...state,
+        canScrollPrev: action.payload.prev,
+        canScrollNext: action.payload.next,
+      };
+    default:
+      return state;
+  }
+}
 
 export default function TestimonialsSection() {
-  const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [state, dispatch] = useReducer(testimonialReducer, {
+    expandedIndex: null,
+    selectedIndex: 0,
+    canScrollPrev: false,
+    canScrollNext: true,
+  });
 
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  const updateScrollStatus = useCallback(() => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    const isAtEnd = scrollLeft >= scrollWidth - clientWidth - 10;
+
+    dispatch({
+      type: "SET_SCROLL_STATUS",
+      payload: {
+        prev: scrollLeft > 10,
+        next: !isAtEnd,
+      },
+    });
+
+    // Update active dot — pin to last index when at the scroll end
+    const lastIndex = AppTestimonials.testimonials.length - 1;
+    if (isAtEnd) {
+      if (state.selectedIndex !== lastIndex) {
+        dispatch({ type: "SET_SELECTED_INDEX", payload: lastIndex });
+      }
+      return;
+    }
+
+    const slideWidth = scrollRef.current.querySelector("div")?.clientWidth || 0;
+    if (slideWidth === 0) return;
+    const newIndex = Math.min(
+      Math.round(scrollLeft / (slideWidth + 32)),
+      lastIndex,
+    );
+    if (newIndex !== state.selectedIndex) {
+      dispatch({ type: "SET_SELECTED_INDEX", payload: newIndex });
+    }
+  }, [state.selectedIndex]);
 
   useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on('select', onSelect);
-    emblaApi.on('reInit', onSelect);
-  }, [emblaApi, onSelect]);
+    const el = scrollRef.current;
+    if (el) {
+      el.addEventListener("scroll", updateScrollStatus);
+      updateScrollStatus();
+      return () => el.removeEventListener("scroll", updateScrollStatus);
+    }
+  }, [updateScrollStatus]);
+
+  useEffect(() => {
+    if (state.expandedIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [state.expandedIndex]);
+
+  const scroll = (direction: "prev" | "next") => {
+    if (!scrollRef.current) return;
+    const slideWidth = scrollRef.current.querySelector('div')?.clientWidth || 0;
+    const scrollAmount = (slideWidth + 32) * (direction === "next" ? 1 : -1);
+    scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  };
 
   const openFullTestimonial = (index: number) => {
-    setExpandedTestimonial(index);
-    document.body.style.overflow = 'hidden';
+    dispatch({ type: "SET_EXPANDED", payload: index });
   };
 
   const closeFullTestimonial = () => {
-    setExpandedTestimonial(null);
-    document.body.style.overflow = 'auto';
+    dispatch({ type: "SET_EXPANDED", payload: null });
   };
 
-  const renderTestimonialCard = (testimonial: typeof TESTIMONIALS[0], index: number) => (
-    <div className="embla__slide p-5" key={index}>
-      <div 
-        className="bg-gradient-to-br from-muted to-muted/80 rounded-lg border border-primary/10 shadow-lg p-7 relative h-full flex flex-col group hover:shadow-primary/20 hover:-translate-y-1.5 transition-all duration-300"
-      >
-        <FaQuoteLeft className="text-primary/30 text-4xl absolute top-4 left-4" />
-        
-        <div className="mb-8 flex-grow pl-6 pt-8">
-          <p className="text-muted-foreground leading-relaxed text-sm">
-            {testimonial.testimonial.length > 200 
-              ? `${testimonial.testimonial.substring(0, 200).trim()}...` 
-              : testimonial.testimonial}
-          </p>
-        </div>
-        
-        <div className="flex items-center justify-between mt-auto pt-5 border-t border-primary/10">
-          <div className="flex items-center">
-            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/40 mr-4 shadow-md shadow-primary/10 flex-shrink-0">
-              <img 
-                src={testimonial.image} 
-                alt={testimonial.name} 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  // Fallback for broken images
-                  const target = e.target as HTMLImageElement;
-                  target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(testimonial.name) + '&background=3B82F6&color=fff';
-                }}
-              />
-            </div>
-            <div>
-              <h4 className="font-bold text-base">{testimonial.name}</h4>
-              <p className="text-primary text-sm font-medium">{testimonial.position}</p>
-            </div>
-          </div>
-          <button 
-            onClick={() => openFullTestimonial(index)}
-            className="p-2.5 text-primary/70 hover:text-primary hover:bg-primary/10 rounded-full transition-colors duration-300"
-            aria-label="Read full testimonial"
-          >
-            <FaExpand className="text-sm" />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+  const getInitialsAvatar = (name: string) =>
+    `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=6366f1&color=fff&size=128&bold=true`;
+
 
   return (
-    <section id="testimonials" className="py-20 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
+    <section id="testimonials" className="py-32 md:py-48 relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-3"
+          className="text-center mb-24"
         >
-          <span className="text-primary text-sm font-medium uppercase tracking-wider">my testimonials</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-8">
+            <FaQuoteLeft className="animate-pulse" />
+            Social Proof
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-8">
+            Kind <span className="text-gradient-primary">Words</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-xl leading-relaxed mb-10">
+            {AppTestimonials.testimonials.length}+ collaborators and tech leaders from around the globe have shared their experience working with me.
+          </p>
+          <a
+            href={AppSocialLinks.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary/40 text-primary text-sm font-bold tracking-widest uppercase hover:bg-primary/10 transition-all duration-300"
+          >
+            <FaLinkedin size={16} />
+            View All on LinkedIn
+          </a>
         </motion.div>
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-3"
-        >
-          <span className="text-gradient">Testimonials</span>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-muted-foreground text-center max-w-2xl mx-auto mb-12 whitespace-pre-line"
-        >
-          Since 2018 I have been a visionary and a reliable software engineering partner
-          for many startups and individuals. Here are few testimonials.
-        </motion.p>
 
-        <div className="relative pb-12">
-          {/* Carousel container */}
-          <div className="embla overflow-hidden rounded-xl" ref={emblaRef}>
-            <div className="embla__container flex py-2">
-              {TESTIMONIALS.map((testimonial, index) => (
-                renderTestimonialCard(testimonial, index)
+        <div className="relative max-w-[1400px] mx-auto">
+          {/* Native Scroll Container */}
+          <div
+            ref={scrollRef}
+            className="flex gap-8 overflow-x-auto pb-12 pt-8 px-4 scrollbar-hide"
+            style={{
+              scrollSnapType: "x mandatory",
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            {AppTestimonials.testimonials.map((testimonial, index) => {
+              const avatarUrl = getInitialsAvatar(testimonial.name);
+
+              return (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-[85%] md:w-[45%] lg:w-[35%] transition-all duration-500"
+                  style={{ scrollSnapAlign: "start" }}
+                >
+                  <div
+                    className="glass-card p-12 h-full flex flex-col items-start text-left cursor-pointer group relative overflow-hidden"
+                    onClick={() => openFullTestimonial(index)}
+                  >
+                    <FaQuoteLeft className="absolute -top-4 -right-4 text-foreground/[0.03] text-[10rem] pointer-events-none group-hover:text-primary/5 transition-colors" />
+
+                    <div className="mb-10 relative">
+                      <FaQuoteLeft className="text-primary text-4xl opacity-50 mb-6" />
+                      <p className="text-xl text-foreground font-medium leading-[1.6] italic line-clamp-6 whitespace-pre-line">
+                        "{testimonial.testimonial}"
+                      </p>
+                    </div>
+
+                    <div className="mt-auto flex items-center gap-5 w-full pt-8 border-t border-border/50">
+                      <div className="relative w-16 h-16 shrink-0">
+                        <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="w-full h-full rounded-full overflow-hidden border border-border relative z-10">
+                          <img
+                            src={avatarUrl}
+                            alt={testimonial.name}
+                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-bold text-lg text-foreground truncate">{testimonial.name}</h4>
+                        <p className="text-primary/80 text-xs font-bold uppercase tracking-[0.2em] truncate">
+                          {testimonial.position}
+                        </p>
+                      </div>
+                      {testimonial.linkedin && (
+                        <a
+                          href={testimonial.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 rounded-full bg-accent/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-accent/60 transition-all"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <FaLinkedin size={18} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="flex justify-between items-center mt-12 px-4">
+            <div className="flex gap-2.5">
+              {AppTestimonials.testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    const slideWidth = scrollRef.current?.querySelector('div')?.clientWidth || 0;
+                    scrollRef.current?.scrollTo({ left: i * (slideWidth + 32), behavior: "smooth" });
+                  }}
+                  className={`h-1.5 rounded-full transition-all duration-500 ${state.selectedIndex === i ? "w-10 bg-primary" : "bg-primary/20 hover:bg-primary/40 w-1.5"
+                    }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
               ))}
             </div>
+
+            <div className="flex gap-4">
+              <button
+                onClick={() => scroll("prev")}
+                disabled={!state.canScrollPrev}
+                className="w-14 h-14 rounded-full glass border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all disabled:opacity-20 disabled:cursor-not-allowed shadow-glass"
+              >
+                <FaChevronLeft size={20} />
+              </button>
+              <button
+                onClick={() => scroll("next")}
+                disabled={!state.canScrollNext}
+                className="w-14 h-14 rounded-full glass border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all disabled:opacity-20 disabled:cursor-not-allowed shadow-glass"
+              >
+                <FaChevronRight size={20} />
+              </button>
+            </div>
           </div>
-          
-          {/* Navigation buttons */}
-          <button 
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-background to-background/80 backdrop-blur-sm p-4 rounded-full shadow-lg z-10 -ml-4 hover:bg-background transition-all duration-300 border border-primary/10"
-            onClick={scrollPrev}
-            disabled={!prevBtnEnabled}
-            aria-label="Previous testimonial"
-          >
-            <FaChevronLeft className="text-lg text-primary" />
-          </button>
-          
-          <button 
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gradient-to-l from-background to-background/80 backdrop-blur-sm p-4 rounded-full shadow-lg z-10 -mr-4 hover:bg-background transition-all duration-300 border border-primary/10"
-            onClick={scrollNext}
-            disabled={!nextBtnEnabled}
-            aria-label="Next testimonial"
-          >
-            <FaChevronRight className="text-lg text-primary" />
-          </button>
-          
-          {/* Navigation buttons are enough, removing dots indicator */}
         </div>
       </div>
 
-      {/* Full testimonial modal */}
+      {/* Expansion Modal */}
       <AnimatePresence>
-        {expandedTestimonial !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6 md:p-10"
-            onClick={closeFullTestimonial}
-          >
+        {state.expandedIndex !== null && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-12">
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-gradient-to-br from-background to-background/95 p-8 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-xl border border-primary/10"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex justify-between items-center mb-8 border-b border-primary/10 pb-6">
-                <div className="flex items-center">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/40 mr-5 shadow-md shadow-primary/10">
-                    <img 
-                      src={TESTIMONIALS[expandedTestimonial].image} 
-                      alt={TESTIMONIALS[expandedTestimonial].name} 
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(TESTIMONIALS[expandedTestimonial].name) + '&background=3B82F6&color=fff';
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-1">{TESTIMONIALS[expandedTestimonial].name}</h3>
-                    <p className="text-primary font-medium">{TESTIMONIALS[expandedTestimonial].position}</p>
-                  </div>
-                </div>
-                <button 
-                  onClick={closeFullTestimonial}
-                  className="p-3 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-full transition-colors duration-300"
-                  aria-label="Close testimonial"
-                >
-                  <FaTimes className="text-xl" />
-                </button>
-              </div>
-              
-              <div className="relative text-muted-foreground">
-                <FaQuoteLeft className="text-primary/20 text-7xl absolute top-0 left-0 transform -translate-x-4 -translate-y-6" />
-                <div className="pl-10 pt-8 whitespace-pre-line leading-relaxed text-base">
-                  {TESTIMONIALS[expandedTestimonial].testimonial}
-                </div>
-              </div>
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-background/90 backdrop-blur-2xl"
+              onClick={closeFullTestimonial}
+            />
 
-              {/* Pagination controls for testimonials */}
-              <div className="mt-10 pt-6 border-t border-primary/10 flex justify-between">
-                <button
-                  className={`flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-md transition-colors ${
-                    expandedTestimonial === 0 
-                      ? 'text-gray-400 cursor-not-allowed' 
-                      : 'text-primary hover:bg-primary/10'
-                  }`}
-                  disabled={expandedTestimonial === 0}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setExpandedTestimonial(expandedTestimonial - 1);
-                  }}
-                >
-                  <FaChevronLeft size={12} />
-                  Previous
-                </button>
-                
-                <button
-                  className={`flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-md transition-colors ${
-                    expandedTestimonial === TESTIMONIALS.length - 1 
-                      ? 'text-gray-400 cursor-not-allowed' 
-                      : 'text-primary hover:bg-primary/10'
-                  }`}
-                  disabled={expandedTestimonial === TESTIMONIALS.length - 1}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setExpandedTestimonial(expandedTestimonial + 1);
-                  }}
-                >
-                  Next
-                  <FaChevronRight size={12} />
-                </button>
-              </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="glass p-8 md:p-16 rounded-[3rem] max-w-4xl w-full relative z-10 border border-border/50 shadow-2xl"
+            >
+              {(() => {
+                const expandedTestimonial = AppTestimonials.testimonials[state.expandedIndex!];
+                const avatarUrl = getInitialsAvatar(expandedTestimonial.name);
+
+                return (
+                  <>
+                    <button
+                      onClick={closeFullTestimonial}
+                      className="absolute top-8 right-8 text-muted-foreground hover:text-foreground transition-colors p-3 hover:bg-accent rounded-full"
+                    >
+                      <FaTimes size={24} />
+                    </button>
+
+                    <FaQuoteLeft className="text-primary text-6xl opacity-30 mb-10" />
+                    <p className="text-2xl md:text-3xl text-foreground leading-[1.6] font-medium italic mb-16 whitespace-pre-line">
+                      "{expandedTestimonial.testimonial}"
+                    </p>
+
+                    <div className="flex items-center gap-6">
+                      <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 p-1">
+                        <div className="w-full h-full rounded-full overflow-hidden">
+                          <img
+                            src={avatarUrl}
+                            alt={expandedTestimonial.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="text-3xl font-bold text-foreground mb-2">{expandedTestimonial.name}</h4>
+                        <p className="text-primary font-bold tracking-widest uppercase text-sm">
+                          {expandedTestimonial.position}
+                        </p>
+                      </div>
+                    </div>
+                  </>
+                );
+              })()}
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </section>
