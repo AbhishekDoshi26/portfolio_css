@@ -4,28 +4,28 @@
   <!-- Home Page -->
   <url>
     <loc>https://abhishekdoshi.dev</loc>
-    <lastmod>2024-11-07</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <priority>1.00</priority>
   </url>
 
   <!-- Projects Page -->
   <url>
     <loc>https://abhishekdoshi.dev/projects</loc>
-    <lastmod>2024-11-07</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <priority>0.80</priority>
   </url>
 
   <!-- Blog Page -->
   <url>
     <loc>https://abhishekdoshi.dev/blog</loc>
-    <lastmod>2024-11-07</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <priority>0.80</priority>
   </url>
 
   <!-- Contact Page -->
   <url>
     <loc>https://abhishekdoshi.dev/contact</loc>
-    <lastmod>2024-11-07</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <priority>0.70</priority>
   </url>
 

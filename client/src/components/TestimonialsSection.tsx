@@ -55,7 +55,7 @@ export default function TestimonialsSection() {
       },
     });
 
-    // Update active dot — pin to last index when at the scroll end
+    // Update active dot - pin to last index when at the scroll end
     const lastIndex = AppTestimonials.testimonials.length - 1;
     if (isAtEnd) {
       if (state.selectedIndex !== lastIndex) {
