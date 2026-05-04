@@ -34,8 +34,14 @@
       },
       {
         "source": "/cv",
-        "destination": "https://drive.google.com/file/d/1e_9spCmmOcYfW6kyoOCys-PT55EilMzL/view?usp=sharing",
+        "destination": "/cv.pdf",
         "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
     ]
   }

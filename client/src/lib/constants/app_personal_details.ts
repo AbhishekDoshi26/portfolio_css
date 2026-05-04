@@ -11,6 +11,5 @@ export class AppPersonalDetails {
   static readonly linkedinShort = "linkedin.com/in/abhishekdoshi26";
   static readonly email = "adoshi26.ad@gmail.com";
   static readonly phone = "+917818044311";
-  static readonly cv_url =
-    "https://drive.google.com/file/d/1ZmaOxWgJumwxeBIE3K-jtTJWT8ujw4po/view?usp=sharing";
+  static readonly cv_url = "/cv.pdf";
 }
