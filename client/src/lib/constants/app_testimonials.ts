@@ -5,6 +5,13 @@ export class AppTestimonials {
 
   static readonly testimonials: Testimonial[] = [
     new Testimonial({
+      name: "Zufar Mukhamadeev",
+      position: "Senior Software Engineer",
+      testimonial:
+        "Working with Abhishek at Qvin was an absolute pleasure. He is an incredibly fast developer who delivers features at lightning speed without compromising quality. Beyond his technical skills, Abhishek was a fantastic mentor in Flutter, providing invaluable guidance to the team.\n\nWhat truly sets him apart is his impact on the entire system implementation; he consistently offered insightful architectural suggestions and proactively identified potential issues before they could arise. I highly recommend him to any team looking for a top-tier engineer who understands the big picture.",
+      linkedin: "https://www.linkedin.com/in/zufar-mukhamadeev-1869a172/",
+    }),
+    new Testimonial({
       name: "Soren Therkelsen",
       position: "Co-Founder @Qvin",
       testimonial:
